@@ -1,38 +1,36 @@
-import { Header } from "@/components/header"
-import { MainSection } from "@/components/main-section"
-import { EventInfo } from "@/components/event-info"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { WatermarkTool } from '@/components/watermark-tool';
+import { ApiTest } from '@/components/api-test';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <main className="flex flex-col items-center pt-8">
-        <div className="w-full max-w-4xl mx-auto px-4">
-          <MainSection />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="container mx-auto py-8">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Intelligent Watermark Tool
+            </span>
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Advanced algorithm-based invisible watermark technology, supporting intelligent addition, precise detection and comprehensive scanning
+          </p>
         </div>
         
-        {/* 水印工具入口 */}
-        <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              🚀 Experience Full Watermark Tool
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Complete watermark solution based on backend API, supporting intelligent detection, batch processing, and high-precision watermark algorithms
-            </p>
-            <Link href="/watermark">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-                Enter Watermark Tool
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+        <WatermarkTool />
+        
+        {/* API Connection Test */}
+        <div className="mt-8 mb-8">
+          <ApiTest />
+        </div>
+        
+        {/* API Status Indicator */}
+        <div className="mt-8 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            API Server Running (localhost:8000) | Frontend Running on (localhost:3001)
           </div>
         </div>
-      </main>
-      <EventInfo />
+      </div>
     </div>
-  )
+  );
 }
